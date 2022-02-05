@@ -68,7 +68,7 @@ export default function Home() {
       .catch((e) => console.log('getting downloadURL of image error => ', e));
   
 
-  }, []);
+  }, [modal]);
 
   
 
