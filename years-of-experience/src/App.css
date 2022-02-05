@@ -364,3 +364,80 @@
   top: 0;
   width: 100px;
 }
+
+.experience-flex-container{
+  width: 100%;
+}
+
+.experience-flex{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-wrap: wrap;
+  flex-direction: row;
+  /* gap: 20px; */
+}
+
+.experience-flex .d-flex{
+  align-items: center;
+  gap: 15px;
+}
+
+.exp-container-home{
+  border-radius: 5px;
+  border: 1px solid #00adb5;
+  width: 99%;
+  padding: 15px;
+}
+
+@media (min-width:767px){
+  .experience-flex{
+    flex-direction: row;
+    
+  }
+  .exp-container-home{
+    width: 49%;
+  }
+}
+
+.job-desc-title{
+  margin-top: 10px;
+}
+
+.job-desc{
+  margin-top: 10px;
+  margin-bottom: 10px;
+ 
+  overflow: scroll;
+  overflow-x: hidden;
+  max-height: 70px;
+}
+
+.work-experience-content{
+  text-align: left;
+}
+
+.work-experience-content-date{
+  display: flex;
+  justify-content: space-between;
+  /* gap: 10px; */
+}
+
+.work-experience-content-date input{
+  width: 49%;
+}
+
+.add-experience{
+  margin-top: 20px;
+  border: 1px solid #00adb5 !important;
+  max-width: 50%;
+  float: right;
+  cursor: pointer;
+  color: #00adb5;
+}
+
+.add-experience-list{
+  text-align: left;
+}

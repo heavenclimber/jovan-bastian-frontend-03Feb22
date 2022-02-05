@@ -1,32 +1,19 @@
 import React, { useState, useEffect } from "react";
 
-import userpic from "../assets/images/user.png";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faInstagram,
-  faLinkedin,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-
-function UploadProfilePic({ editdata, image, setNewImage }) {
+function UploadProfilePic({ editdata, image, newimage, setNewImage }) {
   const [imageedit, setImageEdit] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-      if(loading){
-        setNewImage(imageedit);
-      }
-    // setNewImage(imageedit);
-    console.log(imageedit)
-  }, [loading]);
+  // useEffect(() => {
+  //   setNewImage(imageedit);
+  //   console.log(imageedit)
+  //   console.log(newimage)
+  // }, [imageedit]);
 
-  setLoading(true);
-
-//   const editPic = (e) => {
-//     setNewImage(tempImage);
-//   };
+  const editPic = (e) => {
+    
+    setNewImage(e.target.files[0]);
+    setImageEdit(e.target.files[0]);
+  };
 
   return (
     <center>
@@ -50,7 +37,7 @@ function UploadProfilePic({ editdata, image, setNewImage }) {
           className="upload-button"
           accept="image/png, image/jpeg"
           onChange={(e) => {
-            setImageEdit(e.target.files[0]);
+            editPic(e);
           }}
         />
       </div>
