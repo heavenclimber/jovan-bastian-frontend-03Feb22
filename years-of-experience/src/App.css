@@ -1,0 +1,364 @@
+#loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #D8E3E7;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity .3s ease-out, visibility 0s linear .3s;
+  -o-transition: opacity .3s ease-out, visibility 0s linear .3s;
+  transition: opacity .3s ease-out, visibility 0s linear .3s;
+  z-index: 999;
+}
+
+#loader.show {
+  -webkit-transition: opacity .6s ease-out, visibility 0s linear 0s;
+  -o-transition: opacity .6s ease-out, visibility 0s linear 0s;
+  transition: opacity .6s ease-out, visibility 0s linear 0s;
+  visibility: visible;
+  opacity: 1;
+}
+
+#loader .loader {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  border: 5px solid #dddddd;
+  border-top: 5px solid #126E82;
+  border-radius: 50%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+      -webkit-transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+.bg {
+  animation: slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #126E82 50%, #3f96a1 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: .5;
+  position: absolute;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+}
+
+.bg3 {
+  animation-duration: 5s;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, .8);
+  border-radius: .25em;
+  box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+  box-sizing: border-box;
+  left: 50%;
+  padding: 10vmin;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes slide {
+  0% {
+      transform: translateX(-25%);
+  }
+  100% {
+      transform: translateX(25%);
+  }
+}
+
+/* .profileButtonContainer{
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+
+
+.profileButton {
+  background-color: #D8E3E7;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-weight: 600;
+  color: #126E82;
+  transition: 0.3s ease;
+  border: 2px solid #D8E3E7;
+}
+
+.profileButton:hover {
+  background-color: transparent;
+  color: #D8E3E7;
+} */
+
+
+.main-photo {
+  /* background-color: #126E82; */
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.main-photo h2 {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+}
+
+.main-photo small {
+  color: white;
+}
+
+.imgContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.imgContainer img {
+  max-width: 200px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #D8E3E7;
+}
+
+
+.sosmed {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sosmed i {
+  color: white;
+  transition: ease 0.3s;
+  
+}
+
+.sosmed i:hover {
+  transform: scale(1.5) !important;
+  color: #D8E3E7;
+  /* background-color: #126E82; */
+}
+
+.cvbtn {
+  background-color: #D8E3E7;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 7px;
+  font-weight: 600;
+  color: #126E82;
+  transition: 0.3s ease;
+  border: 2px solid #D8E3E7;
+  text-decoration: none;
+}
+
+.cvbtn:hover {
+  background-color: transparent;
+  color: #D8E3E7;
+}
+
+.ageStyle{
+  font-size: large;
+  font-weight: 400;
+  color: #fff;
+}
+
+.editBar {
+	width: 100%;
+	position: fixed;
+	bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+
+.editBarBtn {
+	width: 160px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	gap: 10px;
+	bottom: 40px;
+	left: 50%;
+	right: 50%;
+	background-color: #51c4d3;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+	transition: .5s
+}
+
+.editBarBtn:hover {
+	background-color: #00adb5
+}
+
+.editBarBtn:active {
+	background-color: #126e82
+}
+
+.editBarBtn p {
+	font-weight: 600;
+	font-size: 17px
+}
+
+.editBarBtn img {
+	max-width: 30px
+}
+
+.modal-container {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	top: 0;
+	z-index: 2;
+	background-color: #393e46b7
+}
+
+
+.modal-input {
+  position: relative;
+  /* transform: translate(-50%, -50%); */
+  width: 90%;
+  display: inline-flex;
+  flex-direction: column;
+  max-height: 80vh;
+
+  scroll-behavior: auto;
+  align-items: center;
+  padding: 1.6rem 3rem;
+  padding-top: 0px;
+  border: 3px solid black;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+  animation: modalease .4s ease-in-out
+}
+
+.modal-scroll{
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+@keyframes modalease {
+	0% {
+		transform: scale(.5);
+  }
+	100% {
+		transform: scale(1)
+	}
+}
+
+.message {
+  font-size:1.1rem;
+  margin-bottom: 1.6rem;
+  margin-top: 0;
+}
+.modal-btn {
+  color:inherit;
+    font-family:inherit;
+  font-size: inherit;
+  background: white;
+  padding: 0.3rem 3.4rem;
+  border: 3px solid black;
+  margin-right: 2.6rem;
+  box-shadow: 0 0 0 black;
+  transition: all 0.2s;
+}
+
+.modal-btn:last-child {
+  margin: 0;
+}
+
+.modal-btn:hover {
+  box-shadow: 0.4rem 0.4rem 0 black;
+  transform: translate(-0.4rem, -0.4rem);
+}
+
+.modal-btn:active {
+  box-shadow: 0 0 0 black;
+  transform: translate(0, 0);
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.col-md-6{
+  text-align: left;
+}
+
+
+.col-md-12{
+  text-align: left;
+}
+
+.upload-container{
+  position: relative;
+  width: 100%;
+  color: grey;
+  
+}
+
+.upload-container p{
+  cursor: pointer !important;
+
+}
+
+.upload-button{
+  cursor: pointer !important;
+  opacity: 0;
+  position: absolute;
+  background-color: #00adb5;
+  left: 0;
+  top: 0;
+  width: 100px;
+}
