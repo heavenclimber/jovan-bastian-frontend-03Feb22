@@ -12,19 +12,21 @@ import {
 
 function UploadProfilePic({ editdata, image, setNewImage }) {
   const [imageedit, setImageEdit] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // console.log(image);
-  });
+      if(loading){
+        setNewImage(imageedit);
+      }
+    // setNewImage(imageedit);
+    console.log(imageedit)
+  }, [loading]);
 
-  const editPic = (e) => {
-    let tempImage = e.target.files[0];
-    console.log(tempImage);
-    setImageEdit(tempImage);
-    console.log(tempImage);
-    // setNewImage(tempImage);
-    // console.log(tempImage);
-  };
+  setLoading(true);
+
+//   const editPic = (e) => {
+//     setNewImage(tempImage);
+//   };
 
   return (
     <center>
@@ -48,8 +50,7 @@ function UploadProfilePic({ editdata, image, setNewImage }) {
           className="upload-button"
           accept="image/png, image/jpeg"
           onChange={(e) => {
-            // setImageEdit(e.target.files[0]);setNewImage(e.target.files[0])
-            editPic(e);
+            setImageEdit(e.target.files[0]);
           }}
         />
       </div>
