@@ -46,8 +46,10 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [modal, setModal] = useState(false);
   const [image, setImage] = useState("");
+  const [loading, setLoad] = useState(false);
 
   useEffect(() => {
+    console.log("masuk")
     let tempData = localStorage.getItem("Mydata");
 
     if (tempData === null) {
@@ -63,21 +65,19 @@ export default function Home() {
         data: JSON.stringify({}),
       })
         .then((response) => {
+          console.log("masuk2")
           let res = response.data;
           setData(res);
           localStorage.setItem("Mydata", JSON.stringify(res));
-         
+          setLoad(true);
         })
         .catch((error) => {
           alert(error);
         });
     } else {
       setData(JSON.parse(tempData));
+      console.log("masuk3")
     }
-
-
-    console.log(data)
-    console.log(data.experiences)
 
     let imageRef = storage.ref(`/images/profilepic`);
     imageRef
@@ -90,7 +90,7 @@ export default function Home() {
 
   return (
     <div>
-      {image ? (
+      {data ? (
         <div>
           <div className="main-photo" id="home">
             <div className="bg"></div>
@@ -104,6 +104,8 @@ export default function Home() {
 
             {modal === true ? (
               <Modal
+                loading={loading}
+                setLoad={setLoad}
                 data={data}
                 setData={setData}
                 image={image}
@@ -157,44 +159,48 @@ export default function Home() {
               </a>
             </div>
 
-            <EditButton modalState={setModal} />
+            <EditButton data={data} modalState={setModal} />
           </div>
           <div className="experience-flex-container">
             <div className="p-3  experience-flex">
               <div className="d-flex justify-content-between align-items-center experience">
                 <h2>Experience</h2>
               </div>
-             
-              {data.experiences ? <div className="experience-flex"> {data.experiences.map((val, i)=>{
-                 return(
-                  <div className="d-flex flex-row mt-3 exp-container exp-container-home">
-                  <img
-                    src="https://i.imgur.com/azSfBM3.png"
-                    width="45"
-                    height="45"
-                  />
-                  <div className="work-experience ml-1">
-                    <span className="font-weight-bold d-block">
-                      {val.role}
-                    </span>
-                    <span className="d-block text-black-50 labels">
-                    {val.company}
-                    </span>
-                    <span className="d-block text-black-50 labels">
-                    {val.startdate} - {val.enddate}
-                    </span>
-                    <h6 className="job-desc-title">Job Description</h6>
-                    <div className="job-desc">
-                      <span>
-                       {val.jobdesc}
-                      </span>
-                    </div>
-                  </div>
+
+              {data.experiences ? (
+                <div className="experience-flex">
+                  {" "}
+                  {data.experiences.map((val, i) => {
+                    return (
+                      <div className="d-flex flex-row mt-3 exp-container exp-container-home">
+                        <img
+                          src="https://i.imgur.com/azSfBM3.png"
+                          width="45"
+                          height="45"
+                        />
+                        <div className="work-experience ml-1">
+                          <span className="font-weight-bold d-block">
+                            {val.role}
+                          </span>
+                          <span className="d-block text-black-50 labels">
+                            {val.company}
+                          </span>
+                          <span className="d-block text-black-50 labels">
+                            {val.startdate} - {val.enddate}
+                          </span>
+                          <h6 className="job-desc-title">Job Description</h6>
+                          <div className="job-desc">
+                            <span>{val.jobdesc}</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-                 );
-               })}</div> :<div></div>}
-                <hr />
-             
+              ) : (
+                <div></div>
+              )}
+              <hr />
             </div>
           </div>
         </div>
