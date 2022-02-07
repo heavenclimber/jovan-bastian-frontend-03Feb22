@@ -22,10 +22,12 @@ function Modal({ loading, setLoad, data, setData, image, setImage, modalState })
 
   useEffect(() => {
     setEditData(data);
-  }, []);
+  }, [data]);
 
   const upload = () => {
     console.log(editdata)
+    setData(editdata)
+    localStorage.setItem("Mydata", JSON.stringify(editdata));
     console.log(JSON.stringify(editdata))
       let the_link =
       "https://jovan-bastian-frontend-03feb22-default-rtdb.asia-southeast1.firebasedatabase.app/data.json";
@@ -41,7 +43,7 @@ function Modal({ loading, setLoad, data, setData, image, setImage, modalState })
     })
       .then((response) => { 
         console.log("WOI")
-        localStorage.setItem("Mydata", JSON.stringify(editdata));
+
         if (newimage === null || newimage === undefined || newimage === "") {
           return 
         }
@@ -50,8 +52,7 @@ function Modal({ loading, setLoad, data, setData, image, setImage, modalState })
           .ref(`/images/profilepic`)
           .put(newimage)
         } 
-     
-       
+              
       })
       .catch((error) => {
         alert(error);

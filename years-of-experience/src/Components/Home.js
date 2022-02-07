@@ -76,7 +76,9 @@ export default function Home() {
         });
     } else {
       setData(JSON.parse(tempData));
+      console.log(data)
       console.log("masuk3")
+      console.log(data)
     }
 
     let imageRef = storage.ref(`/images/profilepic`);
